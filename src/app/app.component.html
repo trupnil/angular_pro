@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="container" >
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <h2 [ngStyle]="currentStyles">Add User <small>Template Driven Form</small></h2>
+
+      <form  #f = "ngForm"  >
+    
+  <div class="form-group">
+    <label for="username">UserName:</label>
+    <input type="text" name="username" class="form-control" id="username" [(ngModel)] = "udata.username" autocomplete="off">
+  </div>
+  
+    <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" name="email" class="form-control" id="email" [(ngModel)] = "udata.email">
+  </div>
+   <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" name="password" class="form-control" id="pwd" [(ngModel)] = "udata.password">
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox"> Remember me</label>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="create(f)">Submit</button>
+   <button type="submit" *ngIf="showform" class="btn btn-primary" (click)="update(f)">UPDATE</button>
+</form>
+    </div>
+    <div class="col-md-6">
+       <h2 >Users Table</h2>
+      <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+         <th>username</th>
+        <th>Email</th>
+        <th>password</th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor = "let data of UsersData">
+      <tr>
+        <td>{{ data.id }}</td>
+        <td>{{ data.username }}</td>
+        <td> {{ data.email }} </td>
+        <td>{{ data.password }}</td>
+           <td><button class="btn btn-danger" (click)="delete(data.id)">DELETE</button></td>
+            <td><button class="btn btn-info" (click)="getdata(data)" >EDIT</button></td>
+      </tr>
+      
+    </tbody>
+  </table>
+    </div>
+  </div>
+
+
+              
+  
+</div>
+
+<!-- <app-test [parentpass]="parentpass"></app-test>-->
+
+<app-footer></app-footer>
+
